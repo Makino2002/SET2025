@@ -1,54 +1,49 @@
-h1 {
-  text-align: center;
+.canvas {
+  background-color: #4d0f00;
+  width: 500px;
+  height: 600px;
+  /* padding: 1px; */
+  overflow: hidden;
+  filter: blur(2px);
 }
 
-.container {
-  background-color: rgb(255, 255, 255);
-  padding: 10px 0;
+.frame {
+  width: 500px;
+  padding: 50px;
+  border: 50px solid black;
+  margin: 20px auto;
 }
 
-.marker {
-  width: 200px;
-  height: 25px;
-  margin: 10px auto;
+.one {
+  width: 425px;
+  height: 150px;
+  background-color: #efb762;
+  margin: 20px auto;
+  box-shadow: 0 0 3px 3px #efb762;
+  border-radius: 9px;
+  transform: rotate(0.6deg);
 }
 
-.cap {
-  width: 60px;
-  height: 25px;
+.two {
+  width: 475;
+  height: 200px;
+  background-color: #8f0401;
+  margin: 0px auto 20px;
+  box-shadow: 0 0 3px 3px #8f0401;
+  border-radius: 8px 10px;
+  transform: rotate(0.4deg);
 }
-
-.sleeve {
-  width: 110px;
-  height: 25px;
-  background-color: rgba(255, 255, 255, 0.5);
-  border-left: 10px double rgba(0, 0, 0, 0.75);
+.one,
+.two {
+  filter: blur(1px);
 }
-
-.cap,
-.sleeve {
-  display: inline-block;
-}
-
-.red {
-  background: linear-gradient(
-    rgb(122, 74, 14),
-    rgb(245, 62, 113),
-    rgb(162, 27, 27)
-  );
-  box-shadow: 0 0 20px 0 rgba(83, 14, 14, 0.8);
-}
-
-.green {
-  background: linear-gradient(#55680d, #71f53e, #116c31);
-  box-shadow: 0px 0px 20px 0px green;
-}
-
-.blue {
-  background: linear-gradient(
-    hsl(186, 76%, 16%),
-    hsl(223, 90%, 60%),
-    hsl(240, 56%, 42%)
-  );
-  box-shadow: 0 0 20px 0 blue;
+.three {
+  width: 91%;
+  height: 28%;
+  background-color: #b20403;
+  margin: auto;
+  filter: blur(2px);
+  box-shadow: 0 0 5px 5px #b20403;
+  border-radius: 30px 60px 60px 12px;
+  transform: rotate(-0.2deg);
 }
