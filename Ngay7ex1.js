@@ -1,3 +1,12 @@
+let width = 5;
+let height = 3;
+let perimeter = (width + height) * 2;
+
+let area = width * perimeter;
+
+console.log("Perimeter:", perimeter);
+console.log("Area:", area);
+
 let mathScore = 8;
 let physicsScore = 7;
 let chemistryScore = 9;
@@ -11,15 +20,6 @@ let celsius = 30;
 let fahrenheit = (9 / 5) * celsius + 32;
 
 console.log(celsius + "°C = " + fahrenheit + "°F");
-
-let width = 5;
-let height = 3;
-let perimeter = (width + height) * 2;
-
-let area = width * perimeter;
-
-console.log("Perimeter:", perimeter);
-console.log("Area:", area);
 
 let billAmount = 200000;
 
