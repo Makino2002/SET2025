@@ -1,0 +1,5 @@
+Difference(s) between == and ===
+==
+    chỉ so sánh giá trị: 1 == "1" => true
+===
+    so sánh giá trị và kiểu dữ liệu: 1 === "1" => false
