@@ -3,3 +3,14 @@ Difference(s) between == and ===
     chỉ so sánh giá trị: 1 == "1" => true
 ===
     so sánh giá trị và kiểu dữ liệu: 1 === "1" => false
+
+let, var, const
+    let: tạo ở block nào thì biến chỉ nằm trong block đó còn nếu ra ngoài block thì báo lỗi, có thể thay đổi giá trị
+    var: tạo ở block nào thì giá trị của nó nằm trong block đó ra ngoài block thì biến có giá trị không xác định, không thể thay đổi giá trị
+    function abc() {
+    console.log(a); // chỗ này a có giá trị không xác định. nếu biến a đổi thành let thì sẽ lỗi
+    {
+        var a = 3;
+    }
+    }
+    const: tạo ở block nào thì biến chỉ nằm trong block đó còn nếu ra ngoài block thì báo lỗi, không thể thay đổi giá trị
