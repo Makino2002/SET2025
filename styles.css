@@ -1,0 +1,30 @@
+.register {
+  width: 100px;
+  margin: 20px auto;
+  margin-bottom: 10px;
+}
+hr {
+  border: 1px solid;
+  margin: 20px 0px;
+}
+from {
+  width: 500px;
+}
+.email,
+.password,
+.repeat-password {
+  margin: 5px auto;
+}
+body {
+  width: 500px;
+  margin: 0px auto;
+}
+input {
+  width: 500px;
+}
+button {
+  width: 100px;
+  height: 30px;
+  margin: 0px;
+  padding: 0 auto;
+}
