@@ -2,23 +2,38 @@ body {
   margin: 50px;
   border: 2px solid black;
 }
+.top {
+  margin: 50px;
+}
+.top--item {
+  margin: 30px;
+}
+.bottom {
+  margin: 50px;
+}
+.section {
+  margin: 50px;
+}
+.section1,
+.section2 {
+  margin: 50px;
+}
 div {
   display: block;
   margin: 20px;
   border: 2px solid black;
 }
-
 .bottom--left {
+  margin: 30px;
   width: 45%;
-  height: 500px;
+  height: 950px;
   display: inline-block;
 }
-.section--item1,
-.section--item2 {
-  margin: 20%;
-}
+
 .bottom--right {
-  height: 500px;
-  width: 45%;
+  margin: 30px;
+
+  height: 950px;
+  width: 46%;
   display: inline-block;
 }
