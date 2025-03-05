@@ -1,0 +1,24 @@
+body {
+  margin: 50px;
+  border: 2px solid black;
+}
+div {
+  display: block;
+  margin: 20px;
+  border: 2px solid black;
+}
+
+.bottom--left {
+  width: 45%;
+  height: 500px;
+  display: inline-block;
+}
+.section--item1,
+.section--item2 {
+  margin: 20%;
+}
+.bottom--right {
+  height: 500px;
+  width: 45%;
+  display: inline-block;
+}
