@@ -4,7 +4,9 @@
   height: 600px;
   padding: 1px;
 }
-
+.spans {
+  color: #8f0401;
+}
 .frame {
   width: 500px;
   padding: 50px;
