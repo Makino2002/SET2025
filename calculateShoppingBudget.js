@@ -12,6 +12,7 @@ function calculateShoppingBudget(list) {
       priceItem = list[i][j] * priceItem;
     }
     sum = sum + priceItem;
+    // sum = sum + list[i][0] * list[i][1];
   }
   return sum;
 }
