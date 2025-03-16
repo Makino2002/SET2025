@@ -1,11 +1,11 @@
-let array2D = [
+const array2D = [
   [1, 2, 3, 4],
   [5, 6, 7, 8],
   [9, 10, 11, 12],
 ];
 
 function snail(array2D) {
-  let result = [];
+  const result = [];
   let top = 0;
   let bottom = array2D.length;
 
