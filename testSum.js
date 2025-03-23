@@ -5,6 +5,9 @@ function sum(a, b) {
   return a + b;
 }
 function testSum(a, b, mess) {
+  if (a.length != b.length) {
+    return "Input không hợp lệ";
+  }
   for (let i = 0; i < a.length; i++) {
     if (sum(a[i], b[i]) === expected[i]) {
       console.log("yes");
