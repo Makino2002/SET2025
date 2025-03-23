@@ -46,7 +46,7 @@ function snail(array2D) {
 
   return result;
 }
-function soSanh(a, b) {
+function compareArrays(a, b) {
   if (a.length !== b.length) {
     return false;
   }
@@ -59,7 +59,7 @@ function soSanh(a, b) {
 }
 function testSnail(input, expected) {
   for (let i = 0; i < input.length; i++) {
-    if (soSanh(snail(input[i]), expected[i])) {
+    if (compareArrays(snail(input[i]), expected[i])) {
       console.log("YES");
     } else {
       console.log("input:", input[i]);
