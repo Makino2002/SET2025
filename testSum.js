@@ -6,12 +6,13 @@ function sum(a, b) {
 }
 function testSum(a, b, mess) {
   if (a.length != b.length) {
-    return "Input không hợp lệ";
+    return "Invalid input";
   }
   for (let i = 0; i < a.length; i++) {
     if (sum(a[i], b[i]) === expected[i]) {
       console.log("yes");
     } else {
+      console.log(mess);
       console.log("input:", a[i], b[i]);
       console.log("output:", expected[i]);
       console.log("Your output:", a[i] + b[i]);
@@ -19,4 +20,4 @@ function testSum(a, b, mess) {
   }
 }
 
-testSum(a, b, "Lỗi hàm sum");
+testSum(a, b, "sum function error");
