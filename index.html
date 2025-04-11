@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chess Game</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="Game">
+      <div class="gameName"><h1>Chess Game</h1></div>
+      <div class="pointToWin">
+        <span>0:0</span>
+        <div></div>
+      </div>
+      <div class="mainChessGame">
+        <div class="chessBox">
+          <table class="chessboard">
+            <tr>
+              <td id="_11">
+                <img src="./img/QuanCo/Xe_Den.png" alt="" id="i11" />
+              </td>
+              <td id="12">
+                <img src="./img/QuanCo/Ma_Den.png" alt="" id="i12" />
+              </td>
+              <td id="_13">
+                <img src="./img/QuanCo/Tuong_Den.png" alt="" id="i13" />
+              </td>
+              <td id="14">
+                <img src="./img/QuanCo/Hau_Den.png" alt="" id="i14" />
+              </td>
+              <td id="_15">
+                <img src="./img/QuanCo/Vua_Den.png" alt="" id="i15" />
+              </td>
+              <td id="16">
+                <img src="./img/QuanCo/Tuong_Den.png" alt="" id="i16" />
+              </td>
+              <td id="_17">
+                <img src="./img/QuanCo/Ma_Den.png" alt="" id="i17" />
+              </td>
+              <td id="18">
+                <img src="./img/QuanCo/Xe_Den.png" alt="" id="i18" />
+              </td>
+            </tr>
+            <tr>
+              <td id="21">
+                <img src="./img/QuanCo/Tot_Den.png" alt="" id="i21" />
+              </td>
+              <td id="_22">
+                <img src="./img/QuanCo/Tot_Den.png" alt="" id="i22" />
+              </td>
+              <td id="23">
+                <img src="./img/QuanCo/Tot_Den.png" alt="" id="i23" />
+              </td>
+              <td id="_24">
+                <img src="./img/QuanCo/Tot_Den.png" alt="" id="i24" />
+              </td>
+              <td id="25">
+                <img src="./img/QuanCo/Tot_Den.png" alt="" id="i25" />
+              </td>
+              <td id="_26">
+                <img src="./img/QuanCo/Tot_Den.png" alt="" id="i26" />
+              </td>
+              <td id="27">
+                <img src="./img/QuanCo/Tot_Den.png" alt="" id="i27" />
+              </td>
+              <td id="_28">
+                <img src="./img/QuanCo/Tot_Den.png" alt="" id="i28" />
+              </td>
+            </tr>
+            <tr>
+              <td id="_31"></td>
+              <td id="32"></td>
+              <td id="_33"></td>
+              <td id="34"></td>
+              <td id="_35"></td>
+              <td id="36"></td>
+              <td id="_37"></td>
+              <td id="38"></td>
+            </tr>
+            <tr>
+              <td id="41"></td>
+              <td id="_42"></td>
+              <td id="43"></td>
+              <td id="_44"></td>
+              <td id="45"></td>
+              <td id="_46"></td>
+              <td id="47"></td>
+              <td id="_48"></td>
+            </tr>
+            <tr>
+              <td id="_51"></td>
+              <td id="52"></td>
+              <td id="_53"></td>
+              <td id="54"></td>
+              <td id="_55"></td>
+              <td id="56"></td>
+              <td id="_57"></td>
+              <td id="58"></td>
+            </tr>
+            <tr>
+              <td id="61"></td>
+              <td id="_62"></td>
+              <td id="63"></td>
+              <td id="_64"></td>
+              <td id="65"></td>
+              <td id="_66"></td>
+              <td id="67"></td>
+              <td id="_68"></td>
+            </tr>
+            <tr>
+              <td id="_71">
+                <img src="./img/QuanCo/Tot_Do.png" alt="" id="i71" />
+              </td>
+              <td id="72">
+                <img src="./img/QuanCo/Tot_Do.png" alt="" id="i72" />
+              </td>
+              <td id="_73">
+                <img src="./img/QuanCo/Tot_Do.png" alt="" id="i73" />
+              </td>
+              <td id="74">
+                <img src="./img/QuanCo/Tot_Do.png" alt="" id="i74" />
+              </td>
+              <td id="_75">
+                <img src="./img/QuanCo/Tot_Do.png" alt="" id="i75" />
+              </td>
+              <td id="76">
+                <img src="./img/QuanCo/Tot_Do.png" alt="" id="i76" />
+              </td>
+              <td id="_77">
+                <img src="./img/QuanCo/Tot_Do.png" alt="" id="i77" />
+              </td>
+              <td id="78">
+                <img src="./img/QuanCo/Tot_Do.png" alt="" id="i78" />
+              </td>
+            </tr>
+            <tr>
+              <td id="81">
+                <img src="./img/QuanCo/Xe_Do.png" alt="" id="i81" />
+              </td>
+              <td id="_82">
+                <img src="./img/QuanCo/Ma_Do.png" alt="" id="i82" />
+              </td>
+              <td id="83">
+                <img src="./img/QuanCo/Tuong_Do.png" alt="" id="i83" />
+              </td>
+              <td id="_84">
+                <img src="./img/QuanCo/Vua_Do.png" alt="" id="i84" />
+              </td>
+              <td id="85">
+                <img src="./img/QuanCo/Hau_Do.png" alt="" id="i85" />
+              </td>
+              <td id="_86">
+                <img src="./img/QuanCo/Tuong_Do.png" alt="" id="i86" />
+              </td>
+              <td id="87">
+                <img src="./img/QuanCo/Ma_Do.png" alt="" id="i87" />
+              </td>
+              <td id="_88">
+                <img src="./img/QuanCo/Xe_Do.png" alt="" id="i88" />
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="mainPlayer">
+          <div class="character">
+            <div class="character__name">
+              <span>Player 1</span>
+            </div>
+            <div class="character__age">
+              <span>Age: </span>
+            </div>
+            <div class="character__customColor">
+              <span>color</span>
+            </div>
+          </div>
+          <div class="time">
+            <span>Thời gian</span>
+          </div>
+          <div class="character">
+            <div class="character__name">
+              <span>Player 2</span>
+
+              <div></div>
+            </div>
+            <div class="character__age">
+              <span>Age: </span>
+            </div>
+            <div class="character__customColor">
+              <span>color</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="settingControl">
+        <div class="play">
+          <span>Play</span>
+        </div>
+        <div class="pause">
+          <span>Pause</span>
+        </div>
+        <div class="undo">
+          <span>Undo</span>
+        </div>
+        <div class="reset">
+          <span>Reset</span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

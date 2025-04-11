@@ -1,0 +1,142 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #818592;
+}
+.Game {
+  background-color: rgb(208, 213, 207);
+  margin: 5px;
+  width: 1000px;
+  height: 820px;
+  /* border: 2px solid black; */
+}
+h1 {
+  margin: 5px;
+}
+.gameName {
+  text-align: center;
+  max-width: 1000px;
+  max-height: 30px;
+  height: 30px;
+  margin: 2px;
+}
+.pointToWin {
+  text-align: center;
+  max-width: 1000px;
+  max-height: 20px;
+  height: 20px;
+
+  margin: 10px;
+}
+.mainChessGame {
+  display: flex;
+  max-width: 1000px;
+  max-height: 700px;
+  height: 695px;
+  margin: 2px;
+  /* border: 2px solid black; */
+}
+
+.settingControl {
+  max-width: 1000px;
+  height: 40px;
+  margin: 2px;
+  /* border: 2px solid black; */
+}
+.chessBox,
+.mainPlayer {
+  display: flex;
+}
+.chessBox {
+  margin: 2px;
+  max-width: 75%;
+  width: 75%;
+  border: 2px solid black;
+}
+
+.mainPlayer {
+  /* text-align: center;/ */
+  display: block;
+  margin: 2px;
+  max-width: 25%;
+  width: 25%;
+  border: 2px solid black;
+}
+.settingControl {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.play,
+.pause,
+.undo,
+.reset {
+  text-align: center;
+  width: 40px;
+  height: 25px;
+  /* border: 2px solid black; */
+}
+.character {
+  border: 2px solid black;
+  margin: 10px;
+}
+.character__name,
+.character__age,
+.character__customColor {
+  margin: 10px;
+  height: 20px;
+}
+.time {
+  margin: 10px;
+}
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+td {
+  overflow: hidden;
+  background-color: rgb(176, 188, 160);
+  margin: 0px;
+  text-align: center;
+  height: 40px;
+  width: 95px;
+}
+#_11,
+#_22,
+#_24,
+#_26,
+#_28,
+#_33,
+#_35,
+#_37,
+#_44,
+#_42,
+#_46,
+#_48,
+#_55,
+#_53,
+#_57,
+#_66,
+#_62,
+#_64,
+#_68,
+#_77,
+#_73,
+#_75,
+#_88,
+#_82,
+#_84,
+#_86,
+#_13,
+#_15,
+#_17,
+#_31,
+#_51,
+#_71 {
+  background-color: bisque;
+  color: antiquewhite;
+}
