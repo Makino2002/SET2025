@@ -1,23 +1,26 @@
-const a = [1, 2, 1, 2];
-const b = [1, 2, 3, 1];
-const expected = [2, 4, 4, 2];
+const testCases = [
+  { a: 1, b: 1, expected: 2 },
+  { a: 2, b: 2, expected: 4 },
+  { a: 1, b: 3, expected: 4 },
+  { a: 2, b: 1, expected: 2 },
+];
+
 function sum(a, b) {
   return a + b;
 }
-function testSum(a, b, mess) {
-  if (a.length != b.length) {
-    return "Invalid input";
-  }
-  for (let i = 0; i < a.length; i++) {
-    if (sum(a[i], b[i]) === expected[i]) {
+
+function testSum(cases, mess) {
+  for (const { a, b, expected } of cases) {
+    const result = sum(a, b);
+    if (result === expected) {
       console.log("yes");
     } else {
       console.log(mess);
-      console.log("input:", a[i], b[i]);
-      console.log("output:", expected[i]);
-      console.log("Your output:", a[i] + b[i]);
+      console.log("input:", a, b);
+      console.log("expected:", expected);
+      console.log("Your output:", result);
     }
   }
 }
 
-testSum(a, b, "sum function error");
+testSum(testCases, "sum function error");
