@@ -3,9 +3,25 @@ import url from "url";
 import httpStatusCodes from "./constants/httpStatusCodes.js";
 import httpMethods from "./constants/httpMethods.js";
 import routes from "./constants/routes.js";
+import fs from "fs";
+const DATA_FILE = "data.json";
 let sumCallCount = 0;
 let apiCallHistory = [];
+function loadData() {
+  if (fs.existsSync(DATA_FILE)) {
+    const raw = fs.readFileSync(DATA_FILE);
+    const data = JSON.parse(raw);
+    sumCallCount = data.sumCallCount || 0;
+    apiCallHistory = data.apiCallHistory || [];
+  }
+}
 
+function saveData() {
+  fs.writeFileSync(
+    DATA_FILE,
+    JSON.stringify({ sumCallCount, apiCallHistory }, null, 2)
+  );
+}
 function sendJSON(res, statusCode, data) {
   res.writeHead(statusCode, { "Content-Type": "application/json" });
   res.end(JSON.stringify(data));
@@ -13,8 +29,9 @@ function sendJSON(res, statusCode, data) {
 
 function recordHistory(endpoint, input, output) {
   apiCallHistory.push({ endpoint, input, output });
+  saveData();
 }
-
+loadData();
 const server = http.createServer((req, res) => {
   const parsedUrl = url.parse(req.url, true);
   const method = req.method;

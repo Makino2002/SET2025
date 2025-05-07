@@ -1,0 +1,22 @@
+{
+  "sumCallCount": 1,
+  "apiCallHistory": [
+    {
+      "endpoint": "/sum",
+      "input": {
+        "num1": 5,
+        "num2": 8
+      },
+      "output": {
+        "sum": 13
+      }
+    },
+    {
+      "endpoint": "/count",
+      "input": {},
+      "output": {
+        "totalCalls": 1
+      }
+    }
+  ]
+}
