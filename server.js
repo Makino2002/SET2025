@@ -1,6 +1,8 @@
-const http = require("http");
-const url = require("url");
-
+import http from "http";
+import url from "url";
+import httpStatusCodes from "./constants/httpStatusCodes.js";
+import httpMethods from "./constants/httpMethods.js";
+import routes from "./constants/routes.js";
 let sumCallCount = 0;
 let apiCallHistory = [];
 
@@ -17,7 +19,7 @@ const server = http.createServer((req, res) => {
   const parsedUrl = url.parse(req.url, true);
   const method = req.method;
   const pathname = parsedUrl.pathname;
-  if (pathname === "/sum" && method === "POST") {
+  if (pathname === routes.SUM && method === httpMethods.POST) {
     let body = "";
 
     req.on("data", (chunk) => {
@@ -28,32 +30,34 @@ const server = http.createServer((req, res) => {
         const { num1, num2 } = JSON.parse(body);
         if (typeof num1 !== "number" || typeof num2 !== "number") {
           const error = { error: "Invalid input" };
-          recordHistory("/sum", { num1, num2 }, error);
-          return sendJSON(res, 400, error);
+          recordHistory(routes.SUM, { num1, num2 }, error);
+          return sendJSON(res, httpStatusCodes.clientError.BAD_REQUEST, error);
         }
 
         const result = { sum: num1 + num2 };
         sumCallCount++;
-        recordHistory("/sum", { num1, num2 }, result);
-        sendJSON(res, 200, result);
+        recordHistory(routes.SUM, { num1, num2 }, result);
+        sendJSON(res, httpStatusCodes.success.OK, result);
       } catch {
         const error = { error: "Invalid input" };
-        recordHistory("/sum", {}, error);
-        sendJSON(res, 400, error);
+        recordHistory(routes.SUM, {}, error);
+        sendJSON(res, httpStatusCodes.clientError.BAD_REQUEST, error);
       }
     });
-  } else if (pathname === "/count" && method === "GET") {
+  } else if (pathname === routes.COUNT && method === httpMethods.GET) {
     const result = { totalCalls: sumCallCount };
-    recordHistory("/count", {}, result);
-    sendJSON(res, 200, result);
-  } else if (pathname === "/current-time" && method === "GET") {
+    recordHistory(routes.COUNT, {}, result);
+    sendJSON(res, httpStatusCodes.success.OK, result);
+  } else if (pathname === routes.CURRENT_TIME && method === httpMethods.GET) {
     const result = { currentTime: new Date().toISOString() };
-    recordHistory("/current-time", {}, result);
-    sendJSON(res, 200, result);
-  } else if (pathname === "/history" && method === "GET") {
-    sendJSON(res, 200, { history: apiCallHistory });
+    recordHistory("routes.CURRENT_TIME", {}, result);
+    sendJSON(res, httpStatusCodes.success.OK, result);
+  } else if (pathname === routes.HISTORY && method === httpMethods.GET) {
+    sendJSON(res, httpStatusCodes.success.OK, { history: apiCallHistory });
   } else {
-    sendJSON(res, 404, { error: "Not found" });
+    sendJSON(res, httpStatusCodes.clientError.NOT_FOUND, {
+      error: "Not found",
+    });
   }
 });
 
