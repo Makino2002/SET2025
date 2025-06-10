@@ -1,0 +1,39 @@
+name: Deploy to Self-Hosted VPS
+
+on:
+  push:
+    branches:
+      - SET-317-API
+
+jobs:
+  deploy:
+    runs-on: self-hosted # Dùng runner trên VPS của bạn
+
+    steps:
+      - name: Pull latest code
+        run: |
+          echo "📦 Pull code từ GitHub"
+          cd ~/SET2025
+          git reset --hard
+          git clean -fd
+          git fetch origin SET-317-API
+          git checkout SET-317-API
+          git pull origin SET-317-API
+
+      - name: Install dependencies
+        run: |
+          echo "📥 Cài lại dependencies"
+          cd ~/SET2025
+          npm install
+
+      - name: Restart Node.js server
+        run: |
+          echo "🔁 Restart server Node.js"
+          cd ~/SET2025
+          OLD_PID=$(pgrep -f "node server.js")
+          if [ ! -z "$OLD_PID" ]; then
+            echo "🛑 Dừng tiến trình cũ: PID=$OLD_PID"
+            kill -9 $OLD_PID
+          fi
+          echo "🚀 Chạy lại server"
+          nohup node server.js > node.log 2>&1 &
