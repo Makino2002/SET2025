@@ -22,7 +22,7 @@ jobs:
           OLD_PID=$(pgrep -f "node server.js")
           if [ ! -z "$OLD_PID" ]; then
             echo "🛑 Dừng tiến trình cũ: PID=$OLD_PID"
-            kill -9 $OLD_PID
+            sudo kill -9 $OLD_PID
           fi
           echo "🚀 Chạy lại server"
           nohup node server.js > node.log 2>&1 &
