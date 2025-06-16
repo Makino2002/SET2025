@@ -10,6 +10,8 @@ jobs:
     runs-on: self-hosted # Dùng runner trên VPS của bạn
 
     steps:
+      - name: config Git safe.directory
+        run: git config --global --add safe.directory $HOME/SET2025
       - name: Pull latest code
         run: |
           echo "📦 Pull code từ GitHub"
