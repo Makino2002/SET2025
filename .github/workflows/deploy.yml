@@ -36,5 +36,5 @@ jobs:
 
             echo "🚀 Khởi chạy lại server"
             nohup node server.js > node.log 2>&1 &
-            echo "✅ Deploy thành công vào Vagrant VM"
+            echo "http://cicd.com/current-time"
           EOF
