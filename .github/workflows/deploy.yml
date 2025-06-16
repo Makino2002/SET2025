@@ -26,3 +26,4 @@ jobs:
           fi
           echo "🚀 Chạy lại server"
           nohup node server.js > node.log 2>&1 &
+          echo "http://cicd.com/current-time"
