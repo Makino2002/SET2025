@@ -12,16 +12,10 @@ jobs:
     steps:
       - name: config Git safe.directory
         run: git config --global --add safe.directory $HOME/SET2025
-      - name: Pull latest code
-        run: |
-          echo "📦 Pull code từ GitHub"
-          cd ~/SET2025
-          git reset --hard
-          git clean -fd
-          git fetch origin SET-317-API
-          git checkout SET-317-API
-          git pull origin SET-317-API
-
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: SET-317-API
       - name: Install dependencies
         run: |
           echo "📥 Cài lại dependencies"
