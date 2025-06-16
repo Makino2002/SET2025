@@ -7,20 +7,13 @@ on:
 
 jobs:
   deploy:
-    runs-on: self-hosted # Dùng runner trên VPS của bạn
+    runs-on: self-hosted
 
     steps:
-      - name: config Git safe.directory
-        run: git config --global --add safe.directory $HOME/SET2025
       - name: Checkout code
         uses: actions/checkout@v4
         with:
           ref: SET-317-API
-      - name: Install dependencies
-        run: |
-          echo "📥 Cài lại dependencies"
-          cd ~/SET2025
-          npm install
 
       - name: Restart Node.js server
         run: |
