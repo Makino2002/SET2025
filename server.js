@@ -49,7 +49,7 @@ const server = http.createServer((req, res) => {
     recordHistory(routes.COUNT, {}, result);
     sendJSON(res, httpStatusCodes.success.OK, result);
   } else if (pathname === routes.CURRENT_TIME && method === httpMethods.GET) {
-    const result = { currentTimeABC: new Date().toISOString() };
+    const result = { currentTime: new Date().toISOString() };
     recordHistory("routes.CURRENT_TIME", {}, result);
     sendJSON(res, httpStatusCodes.success.OK, result);
   } else if (pathname === routes.HISTORY && method === httpMethods.GET) {
