@@ -1,4 +1,4 @@
-name: Deploy to Self-Hosted VPS
+name: CI/CD to Vagrant VM
 
 on:
   push:
@@ -7,23 +7,35 @@ on:
 
 jobs:
   deploy:
-    runs-on: self-hosted
+    runs-on: self-hosted # Runner chạy trên máy của bạn
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          ref: SET-317-API
 
-      - name: Restart Node.js server
+      - name: Setup SSH Key
         run: |
-          echo "🔁 Restart server Node.js"
-          cd ~/SET2025
-          OLD_PID=$(pgrep -f "node server.js")
-          if [ ! -z "$OLD_PID" ]; then
-            echo "🛑 Dừng tiến trình cũ: PID=$OLD_PID"
-            sudo kill -9 $OLD_PID
-          fi
-          echo "🚀 Chạy lại server"
-          nohup node server.js > node.log 2>&1 &
-          echo "http://cicd.com/current-time"
+          echo "${{ secrets.SSH_KEY }}" > key.pem
+          chmod 600 key.pem
+
+      - name: Deploy to Vagrant VM (via localhost:2222)
+        run: |
+          ssh -i key.pem -p 2222 vagrant@127.0.0.1 << 'EOF'
+            echo "📂 Di chuyển vào thư mục project"
+            cd ~/todoapp-with-dom
+
+            echo "🔄 Pull code mới"
+            git pull origin SET-317-API
+
+            echo "📦 Cài dependencies"
+            cd backend
+            npm install
+
+            echo "🛑 Dừng tiến trình cũ nếu có"
+            pkill -f "node server.js" || true
+
+            echo "🚀 Khởi chạy lại server"
+            nohup node server.js > ~/todoapp.log 2>&1 &
+
+            echo "✅ Deploy thành công vào Vagrant VM"
+          EOF
