@@ -12,10 +12,33 @@ jobs:
     steps:
       - name: Cài Nginx nếu chưa có
         run: |
-          which nginx || sudo apt update && sudo apt install -y nginx
+          which nginx || (sudo apt update && sudo apt install -y nginx)
+
+      - name: Copy file cấu hình Nginx
+        run: |
+          echo '
+          server {
+              listen 80;
+              server_name cicd.com;
+
+              location / {
+                  proxy_pass http://localhost:3000;
+                  proxy_set_header Host $host;
+                  proxy_set_header X-Real-IP $remote_addr;
+              }
+          }
+          ' | sudo tee /etc/nginx/sites-available/cicd.com
+
+          sudo ln -sf /etc/nginx/sites-available/cicd.com /etc/nginx/sites-enabled/
+
+      - name: Kiểm tra cấu hình và reload Nginx
+        run: |
+          sudo nginx -t
+          sudo systemctl reload nginx
 
       - name: Pull latest image from DockerHub
-        run: docker pull minhman2002/set2025-api:latest
+        run: |
+          docker pull minhman2002/set2025-api:latest
 
       - name: Stop and remove old container if exists
         run: |
@@ -23,7 +46,5 @@ jobs:
           docker rm set2025 || true
 
       - name: Run new container
-        run: docker run -d -p 3000:3000 --name set2025 minhman2002/set2025-api:latest
-
-      - name: Reload Nginx
-        run: sudo systemctl reload nginx || true
+        run: |
+          docker run -d -p 3000:3000 --name set2025 minhman2002/set2025-api:latest
