@@ -36,15 +36,13 @@ jobs:
           sudo nginx -t
           sudo systemctl reload nginx
 
-      - name: Pull latest image from DockerHub
-        run: |
-          docker pull minhman2002/set2025-api:latest
+      - name: Pull latest image từ DockerHub
+        run: docker pull minhman2002/set2025-api:latest
 
-      - name: Stop and remove old container if exists
+      - name: Stop và remove container cũ nếu có
         run: |
           docker stop set2025 || true
           docker rm set2025 || true
 
-      - name: Run new container
-        run: |
-          docker run -d -p 3000:3000 --name set2025 minhman2002/set2025-api:latest
+      - name: Run container mới
+        run: docker run -d -p 3000:3000 --name set2025 minhman2002/set2025-api:latest
