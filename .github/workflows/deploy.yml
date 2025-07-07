@@ -1,4 +1,4 @@
-name: CI/CD to Vagrant VM
+name: CI/CD Deploy to VPS using DockerHub
 
 on:
   push:
@@ -7,34 +7,18 @@ on:
 
 jobs:
   deploy:
-    runs-on: self-hosted # Runner chạy trên máy của bạn
+    runs-on: self-hosted
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup SSH Key
+      - name: Pull latest image from DockerHub
         run: |
-          echo "${{ secrets.SSH_KEY }}" > key.pem
-          chmod 600 key.pem
+          docker pull minhman2002/set2025-api:latest
 
-      - name: Deploy to Vagrant VM (via localhost:2222)
-        env:
-          VM_IP: 192.168.77.10
+      - name: Stop and remove old container if exists
         run: |
-          ssh -i key.pem -o StrictHostKeyChecking=no vagrant@$VM_IP << 'EOF'
-            echo "📂 Di chuyển vào thư mục project"
-            cd ~/SET2025
+          docker stop set2025 || true
+          docker rm set2025 || true
 
-            echo "🔄 Pull code mới"
-            git pull origin SET-317-API
-
-            echo "📦 Cài dependencies"
-
-            echo "🛑 Dừng tiến trình cũ nếu có"
-            pkill -f "node server.js" || true
-
-            echo "🚀 Khởi chạy lại server"
-            nohup node server.js > node.log 2>&1 &
-            echo "http://cicd.com/current-time"
-          EOF
+      - name: Run new container
+        run: |
+          docker run -d -p 3000:3000 --name set2025 minhman2002/set2025-api:latest
