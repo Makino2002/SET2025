@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Cài Nginx nếu chưa có
         run: |
-          which nginx || (sudo apt update && sudo apt install -y nginx)
+          which nginx || (apt update && apt install -y nginx)
 
       - name: Copy file cấu hình Nginx
         run: |
@@ -27,14 +27,12 @@ jobs:
                   proxy_set_header X-Real-IP $remote_addr;
               }
           }
-          ' | sudo tee /etc/nginx/sites-available/cicd.com
-
-          sudo ln -sf /etc/nginx/sites-available/cicd.com /etc/nginx/sites-enabled/
+          ' | tee /etc/nginx/sites-available/cicd.com
 
       - name: Kiểm tra cấu hình và reload Nginx
         run: |
-          sudo nginx -t
-          sudo systemctl reload nginx
+          nginx -t
+          systemctl reload nginx
 
       - name: Pull latest image từ DockerHub
         run: docker pull minhman2002/set2025-api:latest
