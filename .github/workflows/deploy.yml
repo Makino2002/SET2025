@@ -10,9 +10,12 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      - name: Pull latest image from DockerHub
+      - name: Cài Nginx nếu chưa có
         run: |
-          docker pull minhman2002/set2025-api:latest
+          which nginx || sudo apt update && sudo apt install -y nginx
+
+      - name: Pull latest image from DockerHub
+        run: docker pull minhman2002/set2025-api:latest
 
       - name: Stop and remove old container if exists
         run: |
@@ -20,5 +23,7 @@ jobs:
           docker rm set2025 || true
 
       - name: Run new container
-        run: |
-          docker run -d -p 3000:3000 --name set2025 minhman2002/set2025-api:latest
+        run: docker run -d -p 3000:3000 --name set2025 minhman2002/set2025-api:latest
+
+      - name: Reload Nginx
+        run: sudo systemctl reload nginx || true
