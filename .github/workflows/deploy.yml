@@ -27,14 +27,14 @@ jobs:
                   proxy_set_header X-Real-IP $remote_addr;
               }
           }
-          ' | tee /etc/nginx/sites-available/cicd.com
+          ' | sudo tee /etc/nginx/sites-available/cicd.com
 
-          ln -sf /etc/nginx/sites-available/cicd.com /etc/nginx/sites-enabled/
+          sudo ln -sf /etc/nginx/sites-available/cicd.com /etc/nginx/sites-enabled/
 
       - name: Kiểm tra cấu hình và reload Nginx
         run: |
-          nginx -t
-          systemctl reload nginx
+          sudo nginx -t
+          sudo systemctl reload nginx
 
       - name: Pull latest image từ DockerHub
         run: docker pull minhman2002/set2025-api:latest
