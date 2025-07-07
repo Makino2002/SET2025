@@ -27,7 +27,7 @@ jobs:
                   proxy_set_header X-Real-IP $remote_addr;
               }
           }
-          ' | tee /etc/nginx/sites-available/cicd.com
+          ' | sudo tee /etc/nginx/sites-available/cicd.com
 
       - name: Kiểm tra cấu hình và reload Nginx
         run: |
