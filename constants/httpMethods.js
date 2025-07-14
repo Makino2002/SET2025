@@ -6,4 +6,3 @@ const httpMethods = {
 };
 
 module.exports = httpMethods;
-module.exports = httpStatusCodes;
