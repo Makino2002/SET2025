@@ -1,8 +1,9 @@
-import http from "http";
-import url from "url";
-import httpStatusCodes from "./constants/httpStatusCodes.js";
-import httpMethods from "./constants/httpMethods.js";
-import routes from "./constants/routes.js";
+const http = require("http")
+const url = require("url");
+const httpStatusCodes = require("./constants/httpStatusCodes.js");
+const httpMethods = require("./constants/httpMethods.js");
+const routes = require("./constants/routes.js");
+
 let sumCallCount = 0;
 let apiCallHistory = [];
 
