@@ -10,30 +10,6 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      - name: Cài Nginx nếu chưa có
-        run: |
-          which nginx || (apt update && apt install -y nginx)
-
-      - name: Copy file cấu hình Nginx
-        run: |
-          echo '
-          server {
-              listen 80;
-              server_name cicd.com;
-
-              location / {
-                  proxy_pass http://localhost:3000;
-                  proxy_set_header Host $host;
-                  proxy_set_header X-Real-IP $remote_addr;
-              }
-          }
-          ' | sudo tee /etc/nginx/sites-available/cicd.com
-
-      - name: Kiểm tra cấu hình và reload Nginx
-        run: |
-          nginx -t
-          systemctl reload nginx
-
       - name: Pull latest image từ DockerHub
         run: docker pull minhman2002/set2025-api:latest
 
