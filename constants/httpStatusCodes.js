@@ -27,4 +27,4 @@ const httpStatusCodes = {
     GATEWAY_TIMEOUT: 504,
   },
 };
-export default httpStatusCodes;
+module.exports = httpStatusCodes;

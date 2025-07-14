@@ -5,4 +5,5 @@ const httpMethods = {
   DELETE: "DELETE",
 };
 
-export default httpMethods;
+module.exports = httpMethods;
+module.exports = httpStatusCodes;

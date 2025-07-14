@@ -4,5 +4,4 @@ const routes = {
   CURRENT_TIME: "/current-time",
   HISTORY: "/history",
 };
-
-export default routes;
+module.exports = routes;
